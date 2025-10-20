@@ -1,0 +1,2251 @@
+{
+	"info": {
+		"_postman_id": "c21ba465-216e-4c02-9611-e8a839416dfb",
+		"name": "XYZ Football API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2582823",
+		"_collection_link": "https://www.postman.com/solar-crater-894086/workspace/xyz-foodball/collection/2582823-c21ba465-216e-4c02-9611-e8a839416dfb?action=share&source=collection_link&creator=2582823"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bayu Admin\",\n    \"email\": \"admin@admin.com\",\n    \"password\": \"12341234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/admin/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register Admin - Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Bayu Admin\",\n    \"email\": \"admin@admin.com\",\n    \"password\": \"12341234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/admin/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:18:58 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"admin registered successfully\"\n}"
+						},
+						{
+							"name": "Register Admin - Failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Bayu Admin\",\n    \"email\": \"admin@admin.com\",\n    \"password\": \"12341234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/admin/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:18:35 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"admin already exists. only 1 admin is allowed to register\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"if (jsonData.token) {\r",
+									"    pm.environment.set(\"auth_token\", jsonData.token);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@admin.com\",\n    \"password\": \"12341234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/admin/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login - Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"admin@admin.com\",\n    \"password\": \"12341234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/admin/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:22:43 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "375"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"Bayu Admin\",\n        \"email\": \"admin@admin.com\",\n        \"password\": \"\",\n        \"created_at\": \"2025-10-20T09:18:58.245714+07:00\",\n        \"updated_at\": \"2025-10-20T09:18:58.245714+07:00\",\n        \"deleted_at\": null\n    },\n    \"message\": \"login successful\",\n    \"token\": \"{{vault:json-web-token}}\"\n}"
+						},
+						{
+							"name": "Login - Failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"admin@admin.com\",\n    \"password\": \"123412346\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/admin/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:21:16 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"invalid email or password\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Teams",
+			"item": [
+				{
+					"name": "List Teams",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/teams",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Teams - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/teams",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teams"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:31:26 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "278"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 4,\n            \"name\": \"Garuda Muda\",\n            \"logo_url\": \"https://placehold.co/400\",\n            \"founded_year\": 2015,\n            \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n            \"city\": \"Purwokerto\",\n            \"created_at\": \"2025-10-20T09:30:26.7199+07:00\",\n            \"updated_at\": \"2025-10-20T09:30:26.7199+07:00\",\n            \"deleted_at\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Team",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/teams/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Team - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/teams/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teams",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:30:43 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "276"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 4,\n        \"name\": \"Garuda Muda\",\n        \"logo_url\": \"https://placehold.co/400\",\n        \"founded_year\": 2015,\n        \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n        \"city\": \"Purwokerto\",\n        \"created_at\": \"2025-10-20T09:30:26.7199+07:00\",\n        \"updated_at\": \"2025-10-20T09:30:26.7199+07:00\",\n        \"deleted_at\": null\n    }\n}"
+						},
+						{
+							"name": "Get Team - Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/teams/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teams",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:30:57 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Team not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Team",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Elang Sakti\",\n    \"stadium\": \"Elang International Stadium\",\n    \"city\": \"Cilacap\",\n    \"logo_url\":\"https://placehold.co/400\",\n    \"founded_year\": 2015,\n    \"stadium_address\":\"Jalan Elang No 17 Cilacap\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/teams",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Team - Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Garuda Muda\",\n    \"stadium\": \"Garuda International Stadium\",\n    \"city\": \"Purwokerto\",\n    \"logo_url\":\"https://placehold.co/400\",\n    \"founded_year\": 2015,\n    \"stadium_address\":\"Jalan Garuda No 45 Purwokerto\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/teams",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teams"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:30:26 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "320"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 4,\n        \"name\": \"Garuda Muda\",\n        \"logo_url\": \"https://placehold.co/400\",\n        \"founded_year\": 2015,\n        \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n        \"city\": \"Purwokerto\",\n        \"created_at\": \"2025-10-20T09:30:26.7199008+07:00\",\n        \"updated_at\": \"2025-10-20T09:30:26.7199008+07:00\",\n        \"deleted_at\": null\n    },\n    \"message\": \"Team created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Team",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Garuda Muda\",\n    \"stadium\": \"Garuda International Stadium\",\n    \"city\": \"Purwokerto\",\n    \"logo_url\":\"https://placehold.co/400\",\n    \"founded_year\": 2016,\n    \"stadium_address\":\"Jalan Garuda No 45 Purwokerto\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/teams/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Team - Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Garuda Muda\",\n    \"stadium\": \"Garuda International Stadium\",\n    \"city\": \"Purwokerto\",\n    \"logo_url\":\"https://placehold.co/400\",\n    \"founded_year\": 2016,\n    \"stadium_address\":\"Jalan Garuda No 45 Purwokerto\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/teams/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teams",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:32:18 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "307"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 4,\n        \"name\": \"Garuda Muda\",\n        \"logo_url\": \"https://placehold.co/400\",\n        \"founded_year\": 2016,\n        \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n        \"city\": \"Purwokerto\",\n        \"created_at\": \"0001-01-01T00:00:00Z\",\n        \"updated_at\": \"2025-10-20T09:32:18.6945354+07:00\",\n        \"deleted_at\": null\n    },\n    \"message\": \"Team updated successfully\"\n}"
+						},
+						{
+							"name": "Update Team - Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Garuda Muda\",\n    \"stadium\": \"Garuda International Stadium\",\n    \"city\": \"Purwokerto\",\n    \"logo_url\":\"https://placehold.co/400\",\n    \"founded_year\": 2016,\n    \"stadium_address\":\"Jalan Garuda No 45 Purwokerto\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/teams/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teams",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:35:00 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Team not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Team",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/teams/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Team - Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/teams/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teams",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:37:18 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Team deleted successfully\"\n}"
+						},
+						{
+							"name": "Delete Team - Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/teams/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teams",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 02:36:51 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Team not found\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Players",
+			"item": [
+				{
+					"name": "List All Players",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/players",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"players"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Players - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/players",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"players"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:12:25 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "498"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 4,\n            \"team_id\": 4,\n            \"name\": \"Lukman\",\n            \"height_cm\": 160,\n            \"weight_kg\": 54,\n            \"position\": \"defender\",\n            \"number\": 14,\n            \"created_at\": \"2025-10-20T10:11:39.469319+07:00\",\n            \"updated_at\": \"2025-10-20T10:11:39.469319+07:00\",\n            \"deleted_at\": null,\n            \"team\": {\n                \"id\": 4,\n                \"name\": \"Garuda Muda\",\n                \"logo_url\": \"https://placehold.co/400\",\n                \"founded_year\": 2016,\n                \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n                \"city\": \"Purwokerto\",\n                \"created_at\": \"0001-01-01T07:00:00+07:00\",\n                \"updated_at\": \"2025-10-20T09:32:18.694535+07:00\",\n                \"deleted_at\": null\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List Players By Team",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/players/by-team/:teamId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"players",
+								"by-team",
+								":teamId"
+							],
+							"variable": [
+								{
+									"key": "teamId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Players By Team",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/players/by-team/:teamId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"players",
+										"by-team",
+										":teamId"
+									],
+									"variable": [
+										{
+											"key": "teamId",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:53:34 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "788"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 5,\n            \"team_id\": 4,\n            \"name\": \"Bayu\",\n            \"height_cm\": 160,\n            \"weight_kg\": 54,\n            \"position\": \"defender\",\n            \"number\": 17,\n            \"created_at\": \"2025-10-20T10:13:01.236263+07:00\",\n            \"updated_at\": \"2025-10-20T10:13:01.236263+07:00\",\n            \"deleted_at\": null,\n            \"team\": {\n                \"id\": 0,\n                \"name\": \"\",\n                \"logo_url\": \"\",\n                \"founded_year\": 0,\n                \"stadium_address\": \"\",\n                \"city\": \"\",\n                \"created_at\": \"0001-01-01T00:00:00Z\",\n                \"updated_at\": \"0001-01-01T00:00:00Z\",\n                \"deleted_at\": null\n            }\n        },\n        {\n            \"id\": 6,\n            \"team_id\": 4,\n            \"name\": \"Bayu l\",\n            \"height_cm\": 160,\n            \"weight_kg\": 54,\n            \"position\": \"striker\",\n            \"number\": 18,\n            \"created_at\": \"0001-01-01T07:00:00+07:00\",\n            \"updated_at\": \"2025-10-20T10:18:50.489447+07:00\",\n            \"deleted_at\": null,\n            \"team\": {\n                \"id\": 0,\n                \"name\": \"\",\n                \"logo_url\": \"\",\n                \"founded_year\": 0,\n                \"stadium_address\": \"\",\n                \"city\": \"\",\n                \"created_at\": \"0001-01-01T00:00:00Z\",\n                \"updated_at\": \"0001-01-01T00:00:00Z\",\n                \"deleted_at\": null\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Player",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/players/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"players",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Player - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/players/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"players",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:16:23 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "493"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 6,\n        \"team_id\": 4,\n        \"name\": \"Bayu\",\n        \"height_cm\": 160,\n        \"weight_kg\": 54,\n        \"position\": \"striker\",\n        \"number\": 18,\n        \"created_at\": \"2025-10-20T10:14:44.883396+07:00\",\n        \"updated_at\": \"2025-10-20T10:14:44.883396+07:00\",\n        \"deleted_at\": null,\n        \"team\": {\n            \"id\": 4,\n            \"name\": \"Garuda Muda\",\n            \"logo_url\": \"https://placehold.co/400\",\n            \"founded_year\": 2016,\n            \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n            \"city\": \"Purwokerto\",\n            \"created_at\": \"0001-01-01T07:00:00+07:00\",\n            \"updated_at\": \"2025-10-20T09:32:18.694535+07:00\",\n            \"deleted_at\": null\n        }\n    }\n}"
+						},
+						{
+							"name": "Get Player - Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/players/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"players",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:03:28 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"player not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Player",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bayu\",\n    \"position\": \"striker\",\n    \"team_id\": 4,\n    \"number\": 18,\n    \"height_cm\": 160,\n    \"weight_kg\": 54\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/players",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"players"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Player - Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Bayu\",\n    \"position\": \"striker\",\n    \"team_id\": 4,\n    \"number\": 18,\n    \"height_cm\": 160,\n    \"weight_kg\": 54\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/players",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"players"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:14:44 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "533"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 6,\n        \"team_id\": 4,\n        \"name\": \"Bayu\",\n        \"height_cm\": 160,\n        \"weight_kg\": 54,\n        \"position\": \"striker\",\n        \"number\": 18,\n        \"created_at\": \"2025-10-20T10:14:44.883396+07:00\",\n        \"updated_at\": \"2025-10-20T10:14:44.883396+07:00\",\n        \"deleted_at\": null,\n        \"team\": {\n            \"id\": 4,\n            \"name\": \"Garuda Muda\",\n            \"logo_url\": \"https://placehold.co/400\",\n            \"founded_year\": 2016,\n            \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n            \"city\": \"Purwokerto\",\n            \"created_at\": \"0001-01-01T07:00:00+07:00\",\n            \"updated_at\": \"2025-10-20T09:32:18.694535+07:00\",\n            \"deleted_at\": null\n        }\n    },\n    \"message\": \"Player created successfully\"\n}"
+						},
+						{
+							"name": "Create Player - Player number already exist in team",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Bayu\",\n    \"position\": \"striker\",\n    \"team_id\": 4,\n    \"number\": 18,\n    \"height_cm\": 160,\n    \"weight_kg\": 54\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/players",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"players"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:15:01 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"player number already exists in this team\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Player",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bayu l\",\r\n    \"position\": \"striker\",\r\n    \"team_id\": 4,\r\n    \"number\": 18,\r\n    \"height_cm\": 160,\r\n    \"weight_kg\": 54\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/players/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"players",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Player - Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Bayu l\",\r\n    \"position\": \"striker\",\r\n    \"team_id\": 4,\r\n    \"number\": 18,\r\n    \"height_cm\": 160,\r\n    \"weight_kg\": 54\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/players/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"players",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:18:50 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "528"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 6,\n        \"team_id\": 4,\n        \"name\": \"Bayu l\",\n        \"height_cm\": 160,\n        \"weight_kg\": 54,\n        \"position\": \"striker\",\n        \"number\": 18,\n        \"created_at\": \"0001-01-01T07:00:00+07:00\",\n        \"updated_at\": \"2025-10-20T10:18:50.489447+07:00\",\n        \"deleted_at\": null,\n        \"team\": {\n            \"id\": 4,\n            \"name\": \"Garuda Muda\",\n            \"logo_url\": \"https://placehold.co/400\",\n            \"founded_year\": 2016,\n            \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n            \"city\": \"Purwokerto\",\n            \"created_at\": \"0001-01-01T07:00:00+07:00\",\n            \"updated_at\": \"2025-10-20T09:32:18.694535+07:00\",\n            \"deleted_at\": null\n        }\n    },\n    \"message\": \"Player updated successfully\"\n}"
+						},
+						{
+							"name": "Update Player - Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Bayu l\",\r\n    \"position\": \"striker\",\r\n    \"team_id\": 4,\r\n    \"number\": 18,\r\n    \"height_cm\": 160,\r\n    \"weight_kg\": 54\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/players/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"players",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:20:03 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"player not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Player",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bayu\",\r\n    \"position\": \"striker\",\r\n    \"team_id\": 4,\r\n    \"number\": 18,\r\n    \"height_cm\": 160,\r\n    \"weight_kg\": 54\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/players/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"players",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Player - Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Bayu\",\r\n    \"position\": \"striker\",\r\n    \"team_id\": 4,\r\n    \"number\": 18,\r\n    \"height_cm\": 160,\r\n    \"weight_kg\": 54\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/players/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"players",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:20:54 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Player deleted successfully\"\n}"
+						},
+						{
+							"name": "Update Player - Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Bayu\",\r\n    \"position\": \"striker\",\r\n    \"team_id\": 4,\r\n    \"number\": 18,\r\n    \"height_cm\": 160,\r\n    \"weight_kg\": 54\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/players/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"players",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:23:05 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"failed to delete player\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Matches",
+			"item": [
+				{
+					"name": "List Matches",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/matches",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"matches"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Matches - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/matches",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"matches"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:29:40 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1556"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"match_time\": \"2025-10-29T03:00:00+07:00\",\n            \"home_team_id\": 4,\n            \"away_team_id\": 6,\n            \"status\": \"scheduled\",\n            \"home_team\": {\n                \"id\": 4,\n                \"name\": \"Garuda Muda\",\n                \"logo_url\": \"https://placehold.co/400\",\n                \"founded_year\": 2016,\n                \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n                \"city\": \"Purwokerto\",\n                \"created_at\": \"0001-01-01T07:00:00+07:00\",\n                \"updated_at\": \"2025-10-20T09:32:18.694535+07:00\",\n                \"deleted_at\": null\n            },\n            \"away_team\": {\n                \"id\": 6,\n                \"name\": \"Elang Sakti\",\n                \"logo_url\": \"https://placehold.co/400\",\n                \"founded_year\": 2015,\n                \"stadium_address\": \"Jalan Elang No 17 Cilacap\",\n                \"city\": \"Cilacap\",\n                \"created_at\": \"2025-10-20T10:24:54.385352+07:00\",\n                \"updated_at\": \"2025-10-20T10:24:54.385352+07:00\",\n                \"deleted_at\": null\n            },\n            \"created_at\": \"2025-10-20T10:28:19.872463+07:00\",\n            \"updated_at\": \"2025-10-20T10:28:19.872463+07:00\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 3,\n            \"match_time\": \"2025-10-31T03:00:00+07:00\",\n            \"home_team_id\": 6,\n            \"away_team_id\": 4,\n            \"status\": \"scheduled\",\n            \"home_team\": {\n                \"id\": 6,\n                \"name\": \"Elang Sakti\",\n                \"logo_url\": \"https://placehold.co/400\",\n                \"founded_year\": 2015,\n                \"stadium_address\": \"Jalan Elang No 17 Cilacap\",\n                \"city\": \"Cilacap\",\n                \"created_at\": \"2025-10-20T10:24:54.385352+07:00\",\n                \"updated_at\": \"2025-10-20T10:24:54.385352+07:00\",\n                \"deleted_at\": null\n            },\n            \"away_team\": {\n                \"id\": 4,\n                \"name\": \"Garuda Muda\",\n                \"logo_url\": \"https://placehold.co/400\",\n                \"founded_year\": 2016,\n                \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n                \"city\": \"Purwokerto\",\n                \"created_at\": \"0001-01-01T07:00:00+07:00\",\n                \"updated_at\": \"2025-10-20T09:32:18.694535+07:00\",\n                \"deleted_at\": null\n            },\n            \"created_at\": \"2025-10-20T10:29:34.458436+07:00\",\n            \"updated_at\": \"2025-10-20T10:29:34.458436+07:00\",\n            \"deleted_at\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Match",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/matches/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"matches",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Match",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/matches/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"matches",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:28:48 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "781"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"match_time\": \"2025-10-29T03:00:00+07:00\",\n        \"home_team_id\": 4,\n        \"away_team_id\": 6,\n        \"status\": \"scheduled\",\n        \"home_team\": {\n            \"id\": 4,\n            \"name\": \"Garuda Muda\",\n            \"logo_url\": \"https://placehold.co/400\",\n            \"founded_year\": 2016,\n            \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n            \"city\": \"Purwokerto\",\n            \"created_at\": \"0001-01-01T07:00:00+07:00\",\n            \"updated_at\": \"2025-10-20T09:32:18.694535+07:00\",\n            \"deleted_at\": null\n        },\n        \"away_team\": {\n            \"id\": 6,\n            \"name\": \"Elang Sakti\",\n            \"logo_url\": \"https://placehold.co/400\",\n            \"founded_year\": 2015,\n            \"stadium_address\": \"Jalan Elang No 17 Cilacap\",\n            \"city\": \"Cilacap\",\n            \"created_at\": \"2025-10-20T10:24:54.385352+07:00\",\n            \"updated_at\": \"2025-10-20T10:24:54.385352+07:00\",\n            \"deleted_at\": null\n        },\n        \"created_at\": \"2025-10-20T10:28:19.872463+07:00\",\n        \"updated_at\": \"2025-10-20T10:28:19.872463+07:00\",\n        \"deleted_at\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Matches by Team",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/matches/by-team/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"matches",
+								"by-team",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Matches by Team - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/matches/by-team/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"matches",
+										"by-team",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:36:12 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1556"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"match_time\": \"2025-10-29T03:00:00+07:00\",\n            \"home_team_id\": 4,\n            \"away_team_id\": 6,\n            \"status\": \"scheduled\",\n            \"home_team\": {\n                \"id\": 4,\n                \"name\": \"Garuda Muda\",\n                \"logo_url\": \"https://placehold.co/400\",\n                \"founded_year\": 2016,\n                \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n                \"city\": \"Purwokerto\",\n                \"created_at\": \"0001-01-01T07:00:00+07:00\",\n                \"updated_at\": \"2025-10-20T09:32:18.694535+07:00\",\n                \"deleted_at\": null\n            },\n            \"away_team\": {\n                \"id\": 6,\n                \"name\": \"Elang Sakti\",\n                \"logo_url\": \"https://placehold.co/400\",\n                \"founded_year\": 2015,\n                \"stadium_address\": \"Jalan Elang No 17 Cilacap\",\n                \"city\": \"Cilacap\",\n                \"created_at\": \"2025-10-20T10:24:54.385352+07:00\",\n                \"updated_at\": \"2025-10-20T10:24:54.385352+07:00\",\n                \"deleted_at\": null\n            },\n            \"created_at\": \"2025-10-20T10:28:19.872463+07:00\",\n            \"updated_at\": \"2025-10-20T10:28:19.872463+07:00\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 3,\n            \"match_time\": \"2025-10-31T03:00:00+07:00\",\n            \"home_team_id\": 6,\n            \"away_team_id\": 4,\n            \"status\": \"scheduled\",\n            \"home_team\": {\n                \"id\": 6,\n                \"name\": \"Elang Sakti\",\n                \"logo_url\": \"https://placehold.co/400\",\n                \"founded_year\": 2015,\n                \"stadium_address\": \"Jalan Elang No 17 Cilacap\",\n                \"city\": \"Cilacap\",\n                \"created_at\": \"2025-10-20T10:24:54.385352+07:00\",\n                \"updated_at\": \"2025-10-20T10:24:54.385352+07:00\",\n                \"deleted_at\": null\n            },\n            \"away_team\": {\n                \"id\": 4,\n                \"name\": \"Garuda Muda\",\n                \"logo_url\": \"https://placehold.co/400\",\n                \"founded_year\": 2016,\n                \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n                \"city\": \"Purwokerto\",\n                \"created_at\": \"0001-01-01T07:00:00+07:00\",\n                \"updated_at\": \"2025-10-20T09:32:18.694535+07:00\",\n                \"deleted_at\": null\n            },\n            \"created_at\": \"2025-10-20T10:29:34.458436+07:00\",\n            \"updated_at\": \"2025-10-20T10:29:34.458436+07:00\",\n            \"deleted_at\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Match",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"home_team_id\": 6,\n    \"away_team_id\": 4,\n    \"match_time\": \"2025-10-30T20:00:00Z\",\n    \"stadium\": \"Elang International Stadium\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/matches",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"matches"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Match - Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"home_team_id\": 4,\n    \"away_team_id\": 6,\n    \"match_time\": \"2025-10-28T20:00:00Z\",\n    \"stadium\": \"Garuda International Stadium\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/matches",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"matches"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:28:19 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "820"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"match_time\": \"2025-10-29T03:00:00+07:00\",\n        \"home_team_id\": 4,\n        \"away_team_id\": 6,\n        \"status\": \"scheduled\",\n        \"home_team\": {\n            \"id\": 4,\n            \"name\": \"Garuda Muda\",\n            \"logo_url\": \"https://placehold.co/400\",\n            \"founded_year\": 2016,\n            \"stadium_address\": \"Jalan Garuda No 45 Purwokerto\",\n            \"city\": \"Purwokerto\",\n            \"created_at\": \"0001-01-01T07:00:00+07:00\",\n            \"updated_at\": \"2025-10-20T09:32:18.694535+07:00\",\n            \"deleted_at\": null\n        },\n        \"away_team\": {\n            \"id\": 6,\n            \"name\": \"Elang Sakti\",\n            \"logo_url\": \"https://placehold.co/400\",\n            \"founded_year\": 2015,\n            \"stadium_address\": \"Jalan Elang No 17 Cilacap\",\n            \"city\": \"Cilacap\",\n            \"created_at\": \"2025-10-20T10:24:54.385352+07:00\",\n            \"updated_at\": \"2025-10-20T10:24:54.385352+07:00\",\n            \"deleted_at\": null\n        },\n        \"created_at\": \"2025-10-20T10:28:19.872463+07:00\",\n        \"updated_at\": \"2025-10-20T10:28:19.872463+07:00\",\n        \"deleted_at\": null\n    },\n    \"message\": \"Match created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Report Match Result",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"home_score\": 1,\n    \"away_score\": 0,\n    \"goals\": [\n        {\n            \"player_id\": 5,\n            \"minute\": 23\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/matches/:matchId/report",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"matches",
+								":matchId",
+								"report"
+							],
+							"variable": [
+								{
+									"key": "matchId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Report Match Result - Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"home_score\": 1,\n    \"away_score\": 0,\n    \"goals\": [\n        {\n            \"player_id\": 5,\n            \"minute\": 23\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/matches/:matchId/report",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"matches",
+										":matchId",
+										"report"
+									],
+									"variable": [
+										{
+											"key": "matchId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:49:29 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Match result reported successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Get Standings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/reports/standings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reports",
+								"standings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Standings - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/reports/standings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reports",
+										"standings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:49:47 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "246"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"team_id\": 4,\n            \"team_name\": \"Garuda Muda\",\n            \"played\": 1,\n            \"won\": 1,\n            \"drawn\": 0,\n            \"lost\": 0,\n            \"goals_for\": 1,\n            \"goals_away\": 0,\n            \"points\": 3\n        },\n        {\n            \"team_id\": 6,\n            \"team_name\": \"Elang Sakti\",\n            \"played\": 1,\n            \"won\": 0,\n            \"drawn\": 0,\n            \"lost\": 1,\n            \"goals_for\": 0,\n            \"goals_away\": 1,\n            \"points\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Top Scorers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/reports/top-scorers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reports",
+								"top-scorers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Top Scorers - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/reports/top-scorers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reports",
+										"top-scorers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:50:46 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "83"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"player_id\": 5,\n            \"player_name\": \"Bayu\",\n            \"team_name\": \"Garuda Muda\",\n            \"goals\": 8\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Match Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/reports/matches/:matchId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reports",
+								"matches",
+								":matchId"
+							],
+							"variable": [
+								{
+									"key": "matchId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Match Report - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/v1/reports/matches/:matchId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reports",
+										"matches",
+										":matchId"
+									],
+									"variable": [
+										{
+											"key": "matchId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Oct 2025 03:51:19 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "227"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"match_id\": 2,\n        \"home_team\": \"Garuda Muda\",\n        \"away_team\": \"Elang Sakti\",\n        \"home_score\": 1,\n        \"away_score\": 0,\n        \"match_time\": \"2025-10-29T03:00:00+07:00\",\n        \"status\": \"finished\",\n        \"goals\": [\n            {\n                \"player_name\": \"\",\n                \"minute\": 23,\n                \"is_own_goal\": false\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "your_jwt_token_here",
+			"type": "string"
+		}
+	]
+}
